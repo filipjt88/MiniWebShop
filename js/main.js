@@ -91,6 +91,35 @@ function updateCart() {
         total += item.price * item.quantity;
     });
 
+    function updateCart() {
+        const cartCount = document.getElementById('cart-count');
+        cartCount.textContent = cart.length;
+
+        const cartItems = document.getElementById('cart-items');
+        cartItems.innerHTML = '';
+        let total = 0;
+
+        cart.forEach(item => {
+            const itemRow = document.createElement('div');
+            itemRow.classList.add('d-flex', 'justify-content-between', 'mb-2');
+            itemRow.innerHTML = `
+            <span>${item.name} (${item.quantity}) - €${item.price * item.quantity}</span>
+            <button class="btn btn-warning btn-sm" onclick="increaseQuantity('${item.name}')">+</button>
+            <button class="btn btn-danger btn-sm" onclick="removeFromCart('${item.name}')">X</button>
+        `;
+            cartItems.appendChild(itemRow);
+            total += item.price * item.quantity;
+        });
+
+        const totalRow = document.createElement('div');
+        totalRow.classList.add('d-flex', 'justify-content-between', 'mt-3');
+        totalRow.innerHTML = `
+        <strong>Ukupno: €${total}</strong>
+    `;
+        cartItems.appendChild(totalRow);
+    }
+
+
     const totalRow = document.createElement('div');
     totalRow.classList.add('d-flex', 'justify-content-between', 'mt-3');
     totalRow.innerHTML = `
