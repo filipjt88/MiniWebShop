@@ -1,0 +1,37 @@
+/* style.css */
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+
+#cart-items .d-flex {
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#cart-items button {
+    width: 30%;
+}
+
+#total-price {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#user-info {
+    font-size: 1.1em;
+}
+
+h2 {
+    color: #007bff;
+}
