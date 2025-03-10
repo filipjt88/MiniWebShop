@@ -47,6 +47,7 @@ function renderProducts() {
     });
 }
 
+// dodavanje proizvoda u korpu
 function addToCart(name, price) {
     const product = cart.find(item => item.name === name);
     if (product) {
@@ -57,7 +58,7 @@ function addToCart(name, price) {
     updateCart();
 }
 
-// Povećaj količinu proizvoda u korpi
+// Povećavanje količine proizvoda u korpi
 function increaseQuantity(name) {
     const product = cart.find(item => item.name === name);
     if (product) {
@@ -66,12 +67,13 @@ function increaseQuantity(name) {
     updateCart();
 }
 
-
+// Brisanje proizvoda iz korpe
 function removeFromCart(name) {
     cart = cart.filter(item => item.name !== name);
     updateCart();
 }
 
+// Izmena proizvoda u korpi
 function updateCart() {
     const cartCount = document.getElementById('cart-count');
     cartCount.textContent = cart.length;
@@ -90,6 +92,7 @@ function updateCart() {
         cartItems.appendChild(itemRow);
         total += item.price * item.quantity;
     });
+
 
     function updateCart() {
         const cartCount = document.getElementById('cart-count');
@@ -138,6 +141,7 @@ function checkout() {
     }
 }
 
+// Registracija kupca
 function register() {
     const email = document.getElementById('register-email').value;
     const password = document.getElementById('register-password').value;
@@ -150,6 +154,7 @@ function register() {
     }
 }
 
+// Prijava kupca
 function login() {
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
