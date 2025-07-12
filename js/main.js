@@ -7,7 +7,7 @@ function addToCart(id) {
     if (product) {
         cart.push(product);
         localStorage.setItem("cart", JSON.stringify(cart));
-        alert(`${product.name} dodat u korpu!`);
+        alert(`${product.name} added to cart!`);
     }
 }
 
