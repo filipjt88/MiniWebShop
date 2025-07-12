@@ -3,66 +3,71 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mini WebShop</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        if (localStorage.getItem("loggedIn") !== "true") {
+            window.location.href = "login.html";
+        }
+    </script>
     <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-    <header class="bg-primary text-white text-center py-3">
-        <h1>Mini WebShop</h1>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+        <a class="navbar-brand" href="#">📱 MiniShop</a>
+        <a href="cart.html" class="btn btn-outline-light">🛒 Korpa</a>
+        <div class="ms-auto">
+            <div class="ms-auto d-flex align-items-center gap-2">
+                <span id="user-email" class="text-white me-2"></span>
+                <button class="btn btn-outline-danger" onclick="logout()">Logout</button>
+            </div>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <button class="btn btn-outline-primary me-2" onclick="showSection('products')">Proizvodi</button>
-            <button class="btn btn-outline-primary me-2" onclick="showSection('cart')">Korpa (<span
-                    id="cart-count">0</span>)</button>
-            <button class="btn btn-outline-primary" onclick="showSection('auth')">Prijava/Registracija</button>
         </div>
     </nav>
 
-    <div class="container mt-4">
-        <!-- Products Section -->
-        <section id="products">
-            <h2 class="mb-3">Mobilni telefoni</h2>
-            <div id="product-list" class="row">
-                <!-- Proizvodi će biti dodani putem JS -->
-            </div>
-        </section>
+    <header class="bg-light text-center py-5">
+        <h1>Welcome to Mini WebShop</h1>
+        <p class="lead">The best selection of mobile phones</p>
+    </header>
 
-        <!-- Cart Section -->
-        <section id="cart" class="d-none">
-            <h2 class="mb-3">Vaša korpa</h2>
-            <div id="cart-items" class="mb-3"></div>
-            <button class="btn btn-success" onclick="checkout()">Kupi</button>
-        </section>
+    <main class="container my-4">
+        <div class="row" id="product-list">
+            <!-- JS će dinamički ubaciti proizvode ovde -->
+        </div>
+    </main>
 
-        <!-- Auth Section -->
-        <section id="auth" class="d-none">
-            <h2 class="mb-3">Prijava</h2>
-            <div class="mb-3">
-                <input type="text" id="login-email" class="form-control" placeholder="Email">
+    <!-- Kupovina uspešna modal -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="checkoutModalLabel">Uspešna kupovina</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Zatvori"></button>
+                </div>
+                <div class="modal-body text-center">
+                    Hvala vam na kupovini! Proizvodi su uspešno poručeni. 😊
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+                </div>
             </div>
-            <div class="mb-3">
-                <input type="password" id="login-password" class="form-control" placeholder="Lozinka">
-            </div>
-            <button class="btn btn-primary" onclick="login()">Prijavi se</button>
-
-            <h2 class="mt-4 mb-3">Registracija</h2>
-            <div class="mb-3">
-                <input type="text" id="register-email" class="form-control" placeholder="Email">
-            </div>
-            <div class="mb-3">
-                <input type="password" id="register-password" class="form-control" placeholder="Lozinka">
-            </div>
-            <button class="btn btn-secondary" onclick="register()">Registruj se</button>
-        </section>
+        </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/products.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        function logout() {
+            localStorage.removeItem("loggedIn");
+            alert("Izlogovani ste.");
+            window.location.href = "login.html";
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
