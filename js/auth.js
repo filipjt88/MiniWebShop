@@ -10,13 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const password = document.getElementById("regPassword").value;
 
             if (email === "" || password.length < 6) {
-                alert("Unesi validan email i lozinku (min 6 karaktera)");
+                alert("Enter a valid email and password (min 6 characters)");
                 return;
             }
 
             const user = { email, password };
             localStorage.setItem("user", JSON.stringify(user));
-            alert("Registracija uspešna!");
+            alert("Registration successful!");
             window.location.href = "login.html";
         });
     }
@@ -31,12 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const user = JSON.parse(localStorage.getItem("user"));
 
             if (!user || user.email !== email || user.password !== password) {
-                alert("Neispravan email ili lozinka!");
+                alert("Invalid email or password!");
                 return;
             }
 
             localStorage.setItem("loggedIn", "true");
-            alert("Uspešno ste se ulogovali!");
+            alert("You have successfully logged in!");
             window.location.href = "index.html";
         });
     }
