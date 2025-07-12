@@ -1,36 +1,60 @@
+/* Modern hover efekti */
 body {
-    background-color: #f8f9fa;
+    background-color: #eee;
 }
 
 .card {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-
-#cart-items .d-flex {
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+.card-title {
+    font-weight: 600;
 }
 
-#cart-items button {
-    width: 30%;
+.card-img-top {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
 }
 
-#total-price {
-    font-size: 1.2em;
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+#user-email {
     font-weight: bold;
 }
 
-#user-info {
-    font-size: 1.1em;
+button:focus,
+input:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
-h2 {
-    color: #007bff;
+@media (max-width: 768px) {
+    .card .card-body {
+        text-align: center;
+    }
+
+    .navbar .ms-auto {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-end;
+    }
 }
